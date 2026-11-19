@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:title" content="Civic Integrity Movement">
+<meta property="og:description" content="Program edukasi antikorupsi untuk mahasiswa Telkom University: pre-test, video dan materi, lalu post-test.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/poster.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<title>Civic Integrity Movement</title>
+<meta name="description" content="Program edukasi antikorupsi untuk mahasiswa Telkom University: pre-test, video dan materi, lalu post-test.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500&display=swap">
+<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
+<style>
+/* Kind: service (program edukasi kampus). Tampilan terang satu tema, disengaja. Grid 12 kolom, split teks kolom 1-5 / visual kolom 7-12. */
+:root {
+  color-scheme: light;
+  --bg: #ffffff;
+  --surface: #f4f4f2;
+  --ink: #1f2b4d;
+  --muted: #5f6780;
+  --faint: #b9bfcd;
+  --line: rgba(31, 43, 77, .14);
+  --accent: #b71c38;
+  --dark: #1f2b4d;
+  --on-dark: #ffffff;
+  --on-dark-muted: #bcc3d6;
+  --on-dark-line: rgba(255, 255, 255, .16);
+  --hot-on-dark: #f3798d;
+  --blue: #1f6ea6;
+  --grey-bar: #a3a9b8;
+  --font: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --gut: 80px;
+  --ease: cubic-bezier(.2, .8, .2, 1);
+}
+* { box-sizing: border-box; }
+html { scroll-padding-top: 72px; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 16px; line-height: 26px; font-weight: 400; }
+h1, h2, h3, p, ul, ol, dl, dd, figure, blockquote { margin: 0; }
+h1, h2, h3 { font-weight: 500; text-wrap: balance; hyphens: auto; }
+h1 { font-size: 72px; line-height: 1.02; letter-spacing: -0.035em; }
+h2 { font-size: 48px; line-height: 1.06; letter-spacing: -0.025em; }
+h3 { font-size: 24px; line-height: 1.2; letter-spacing: -0.01em; }
+.lead { font-size: 20px; line-height: 1.5; max-width: 34em; }
+.muted { color: var(--muted); }
+.small { font-size: 14px; line-height: 22px; color: var(--muted); }
+.container { width: min(100% - 2 * var(--gut), 1280px); margin-inline: auto; }
+.grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; }
+.ico { width: 1em; height: 1em; fill: currentColor; flex: none; }
+.skip { position: absolute; left: 16px; top: -60px; background: var(--ink); color: #fff; padding: 10px 16px; border-radius: 8px; z-index: 50; }
+.skip:focus { top: 12px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* NAV */
+.nav { position: fixed; inset: 0 0 auto; z-index: 20; background: var(--bg); border-bottom: 1px solid var(--line); padding-top: env(safe-area-inset-top, 0px); }
+.nav .container { height: 72px; display: flex; align-items: center; gap: 32px; }
+.brand { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 500; letter-spacing: -0.01em; text-decoration: none; color: var(--ink); white-space: nowrap; }
+.mark { width: 26px; height: 26px; border-radius: 50%; border: 6px solid var(--accent); }
+.nav ul { list-style: none; padding: 0; display: flex; gap: 28px; margin-left: auto; }
+.nav ul a { font-size: 15px; font-weight: 500; color: var(--ink); text-decoration: none; position: relative; padding-block: 6px; }
+.nav ul a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform 150ms var(--ease); }
+.menu-btn { display: none; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); align-items: center; justify-content: center; cursor: pointer; }
+.menu-btn .ico { font-size: 22px; }
+.sheet { position: fixed; inset: 0; z-index: 30; background: var(--bg); padding: calc(env(safe-area-inset-top, 0px) + 16px) 24px 24px; display: grid; align-content: start; gap: 8px; }
+.sheet ul { list-style: none; padding: 0; margin-top: 48px; }
+.sheet li a { display: flex; align-items: center; height: 56px; font-size: 24px; font-weight: 500; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+.sheet .top { display: flex; justify-content: space-between; align-items: center; }
+
+/* BUTTONS (solid) */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 44px; padding: 0 24px; border-radius: 8px; font: 500 16px/1 var(--font); text-decoration: none; white-space: nowrap; border: 1px solid transparent; cursor: pointer; }
+.btn--primary { background: var(--accent); color: #fff; }
+.btn--off { background: var(--surface); color: var(--muted); border-color: var(--line); cursor: default; }
+.btn .ico { font-size: 18px; }
+.link { color: var(--ink); font-weight: 500; text-decoration: none; background: linear-gradient(currentColor, currentColor) 0 100%/0 1px no-repeat, linear-gradient(color-mix(in oklab, currentColor 25%, transparent), color-mix(in oklab, currentColor 25%, transparent)) 0 100%/100% 1px no-repeat; transition: background-size 120ms var(--ease); }
+.link:hover, .link:focus-visible { background-size: 100% 1px, 100% 1px; transition-duration: 150ms; }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; }
+
+/* SECTIONS */
+main > section, footer.closing { min-height: calc(var(--h, 1) * 100svh); padding-block: 120px 72px; }
+section h2 + * { margin-top: 24px; }
+.dark { background: var(--dark); color: var(--on-dark); }
+.dark h2, .dark h3 { color: var(--on-dark); }
+.dark .muted, .dark .small { color: var(--on-dark-muted); }
+.alt { background: var(--surface); }
+.text { grid-column: 1 / span 5; display: grid; gap: 24px; align-content: start; min-width: 0; }
+.visual { grid-column: 7 / span 6; min-width: 0; }
+.full { grid-column: 1 / -1; min-width: 0; }
+
+/* HERO */
+.hero { min-height: 100svh; padding-block: 192px 48px; display: flex; flex-direction: column; }
+.hero .container { flex: 1; display: grid; grid-template-rows: auto 1fr auto; gap: 32px; }
+.hero h1 { max-width: 13em; }
+.hero .lead { max-width: 36em; }
+.facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; border-top: 1px solid var(--line); padding-top: 24px; align-self: end; }
+.facts dt { font-size: 38px; line-height: 1.1; letter-spacing: -0.02em; font-weight: 500; font-variant-numeric: tabular-nums; }
+.facts dt.hot { color: var(--accent); }
+.facts dd { font-size: 14px; line-height: 20px; color: var(--muted); margin-top: 6px; }
+.source { font-size: 13px; color: var(--muted); }
+
+/* VIDEO */
+.frame { display: block; position: relative; aspect-ratio: 16 / 9; max-width: 100%; border-radius: 12px; overflow: hidden; background: var(--dark); color: var(--on-dark); text-decoration: none; }
+.frame .poster { position: absolute; inset: 0; padding: 32px; display: grid; align-content: space-between; transition: transform 400ms var(--ease); }
+.frame .poster strong { font-weight: 500; font-size: clamp(26px, 3.2vw, 44px); line-height: 1.05; letter-spacing: -0.025em; max-width: 12em; }
+.frame .poster strong em { font-style: normal; color: var(--hot-on-dark); }
+.frame .play { width: 72px; height: 72px; border-radius: 50%; background: var(--accent); display: grid; place-items: center; }
+.frame .play .ico { font-size: 34px; color: #fff; }
+.frame .row { display: flex; justify-content: space-between; align-items: end; gap: 16px; }
+.frame .tag { font-size: 14px; color: var(--on-dark-muted); }
+
+.clip { display: block; width: min(100%, 360px); height: auto; aspect-ratio: 9 / 16; border-radius: 16px; background: var(--dark); box-shadow: 0 8px 24px rgba(31, 43, 77, .12); }
+
+/* LISTS WITH RULES */
+.rows { list-style: none; padding: 0; border-top: 1px solid var(--line); }
+.rows li { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 4px 16px; padding-block: 18px; border-bottom: 1px solid var(--line); align-items: start; }
+.rows .ico { font-size: 28px; color: var(--accent); grid-row: span 2; margin-top: 2px; }
+.rows b { font-weight: 500; font-size: 20px; line-height: 1.3; }
+.rows span { color: var(--muted); }
+.pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.pair dt { font-size: 38px; line-height: 1.1; font-weight: 500; letter-spacing: -0.02em; color: var(--accent); }
+.pair dd { font-size: 14px; line-height: 21px; color: var(--muted); margin-top: 6px; }
+
+/* CHARTS */
+.chart { display: grid; gap: 28px; }
+.bar { display: grid; gap: 10px; }
+.bar .head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+.bar .head span { font-size: 18px; line-height: 1.35; }
+.bar .head b { font-weight: 500; font-size: 38px; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.bar .track { height: 14px; border-radius: 7px; background: var(--on-dark-line); overflow: hidden; }
+.bar .fill { display: block; height: 100%; border-radius: 7px; background: var(--on-dark); }
+.bar .fill.hot { background: var(--hot-on-dark); }
+.bar .head b.hot { color: var(--hot-on-dark); }
+.reasons { list-style: none; padding: 0; display: grid; gap: 14px; }
+.reasons li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 16px; align-items: baseline; }
+.reasons .v { font-weight: 500; font-variant-numeric: tabular-nums; }
+.reasons .track { grid-column: 1 / -1; height: 10px; border-radius: 5px; background: var(--surface); overflow: hidden; }
+.reasons .fill { display: block; height: 100%; border-radius: 5px; }
+.c-ind { background: var(--accent); }
+.c-rel { background: var(--ink); }
+.c-ins { background: var(--blue); }
+.c-lain { background: var(--grey-bar); }
+.barriers { list-style: none; padding: 0; border-top: 1px solid var(--line); }
+.barriers li { padding-block: 18px; border-bottom: 1px solid var(--line); display: grid; gap: 6px; }
+.barriers h3 { display: flex; align-items: center; gap: 10px; font-size: 22px; }
+.barriers i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+
+/* MOMENT: word highlight */
+.statement { font-size: 48px; line-height: 1.12; letter-spacing: -0.025em; font-weight: 500; max-width: 22em; }
+.statement .wd { transition: color 200ms linear; }
+.js-hl .statement .wd { color: var(--faint); }
+.js-hl .statement .wd.on { color: var(--ink); }
+.versus { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.versus h3 { padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+.versus .toxic h3 { border-color: var(--accent); color: var(--accent); }
+.versus ul { list-style: none; padding: 0; }
+.versus li { padding-block: 12px; border-bottom: 1px solid var(--line); }
+blockquote { display: grid; gap: 8px; }
+blockquote p { font-size: 24px; line-height: 1.4; font-style: italic; letter-spacing: -0.01em; }
+blockquote cite { font-style: normal; font-size: 14px; color: var(--muted); }
+
+/* TINDAKAN */
+.cols3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.act { display: grid; gap: 16px; align-content: start; border-top: 2px solid var(--ink); padding-top: 24px; }
+.act .ico { font-size: 32px; color: var(--accent); }
+.act ol, .act ul { padding-left: 20px; display: grid; gap: 8px; }
+.steps { list-style: none; padding: 0; counter-reset: s; display: grid; gap: 0; border-top: 1px solid var(--line); }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 16px; padding-block: 16px; border-bottom: 1px solid var(--line); }
+.steps li::before { content: counter(s); width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--ink); display: grid; place-items: center; font-weight: 500; font-size: 15px; }
+
+/* APP FRAME (rancangan Lapor Aman) */
+.app { background: var(--bg); border: 1px solid var(--line); border-radius: 20px; padding: 28px; display: grid; gap: 18px; max-width: 520px; margin-left: auto; box-shadow: 0 8px 24px rgba(31, 43, 77, .08); }
+.app .bar-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px; }
+.app .bar-top b { font-weight: 500; font-size: 20px; display: flex; align-items: center; gap: 10px; white-space: nowrap; }
+.app .bar-top b .ico { color: var(--accent); font-size: 24px; }
+.field { display: grid; gap: 6px; }
+.field label { font-size: 14px; font-weight: 500; }
+.field .box { height: 44px; border: 1px solid var(--line); border-radius: 8px; padding: 0 14px; display: flex; align-items: center; color: var(--muted); font-size: 15px; }
+.field .box.tall { height: 88px; align-items: start; padding-top: 11px; }
+.app .send { height: 44px; border-radius: 8px; background: var(--accent); color: #fff; display: grid; place-items: center; font-weight: 500; }
+.status { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; padding-top: 6px; border-top: 1px solid var(--line); }
+.status div { font-size: 13px; color: var(--muted); display: grid; gap: 6px; }
+.status div::before { content: ""; height: 4px; border-radius: 2px; background: var(--surface); }
+.status div.done::before { background: var(--ink); }
+.status div.done { color: var(--ink); }
+
+.st { font-weight: 500; }
+#alur .steps li { font-size: 18px; line-height: 28px; padding-block: 20px; }
+.acts { list-style: none; padding: 0; border-top: 1px solid var(--line); }
+.acts > li { padding-block: 16px; border-bottom: 1px solid var(--line); display: grid; gap: 10px; }
+.acts h3 { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 22px; }
+.acts h3 .ico { font-size: 26px; color: var(--accent); }
+.acts h3 .chip, .app .chip { font-size: 13px; font-weight: 400; line-height: 1; padding: 6px 10px; border-radius: 999px; background: var(--surface); color: var(--muted); white-space: nowrap; letter-spacing: 0; }
+.acts ol { padding-left: 20px; display: grid; gap: 6px; }
+
+/* NILAI */
+.chain { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: stretch; gap: 12px; }
+.chain .node { border: 1px solid var(--line); border-radius: 12px; padding: 20px; display: grid; gap: 6px; background: var(--bg); }
+.chain .node.weak { border: 2px solid var(--accent); }
+.chain .node.weak h3 { color: var(--accent); }
+.chain .arrow { display: grid; place-items: center; color: var(--muted); font-size: 22px; }
+.sila { list-style: none; padding: 0; border-top: 1px solid var(--line); }
+.sila li { display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 16px; padding-block: 14px; border-bottom: 1px solid var(--line); align-items: baseline; }
+.sila .n { font-size: 24px; font-weight: 500; color: var(--accent); }
+.sdg { display: grid; gap: 16px; align-content: start; }
+.sdg .code { font-size: 38px; font-weight: 500; letter-spacing: -0.02em; color: #00689d; line-height: 1; }
+.sdg dl { display: grid; gap: 14px; }
+.sdg dt { font-weight: 500; }
+.sdg dd { color: var(--muted); }
+
+/* CLOSING */
+footer.closing { display: grid; align-content: space-between; gap: 72px; background: var(--surface); }
+.close { display: grid; gap: 24px; }
+.close .btn { width: 100%; height: 64px; font-size: 20px; border-radius: 12px; }
+.foot { display: grid; gap: 32px; border-top: 1px solid var(--line); padding-top: 32px; }
+.foot nav ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 12px 28px; }
+.foot nav a { color: var(--ink); text-decoration: none; font-weight: 500; }
+.refs { columns: 2; column-gap: 24px; font-size: 13px; line-height: 20px; color: var(--muted); padding-left: 18px; }
+.refs li { break-inside: avoid; margin-bottom: 8px; }
+.legal { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; font-size: 13px; color: var(--muted); }
+
+/* HOVER LAYER */
+@media (hover: hover) and (pointer: fine) {
+  .btn { transition: transform 120ms var(--ease), background-color 120ms var(--ease); }
+  .btn--primary:hover { transform: translateY(-1px); transition-duration: 150ms; background: color-mix(in oklab, var(--accent) 86%, var(--ink)); }
+  .nav ul a:hover::after { transform: scaleX(1); }
+  a.frame:hover .poster { transform: scale(1.03); transition-duration: 600ms; }
+  .foot nav a:hover { color: var(--accent); }
+}
+.btn--primary:active { transform: translateY(1px) scale(.985); transition-duration: 90ms; }
+
+/* ENTRANCE */
+.m-enter:not(.m-enter-done) [data-enter] h1, .m-enter:not(.m-enter-done) [data-enter] [data-rise] { opacity: 0; }
+.m-enter-done [data-enter] h1, .m-enter-done [data-enter] [data-rise] { transition: opacity 400ms; }
+[data-enter].is-entering h1, [data-enter].is-in h1, [data-enter].is-entered h1 { transition: none; }
+[data-enter] .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .08em; margin-bottom: -.08em; }
+[data-enter] .w > span { display: inline-block; }
+[data-enter].is-entering .w > span { transform: translateY(105%); }
+[data-enter].is-entering [data-rise] { opacity: 0; transform: translateY(12px); }
+[data-enter].is-in .w > span { transition: transform 700ms cubic-bezier(.22, 1, .36, 1); }
+[data-enter].is-in [data-rise] { transition: opacity 520ms, transform 520ms cubic-bezier(.22, 1, .36, 1); }
+
+/* RESPONSIVE */
+@media (max-width: 1023px) {
+  :root { --gut: 40px; }
+  .nav ul { display: none; }
+  .menu-btn { display: inline-flex; }
+  .nav .container { gap: 12px; }
+  .nav .btn { margin-left: auto; }
+  .text, .visual { grid-column: 1 / -1; }
+  .visual { margin-top: 48px; }
+  .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cols3 { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+}
+@media (max-width: 639px) {
+  :root { --gut: max(24px, env(safe-area-inset-left, 0px)); }
+  h1 { font-size: 38px; }
+  h2 { font-size: 30px; }
+  h3 { font-size: 22px; }
+  .lead { font-size: 18px; }
+  .nav .container { height: 56px; }
+  html { scroll-padding-top: 56px; }
+  .nav .btn { display: none; }
+  .menu-btn { margin-left: auto; }
+  main > section, footer.closing { min-height: auto; padding-block: 96px 48px; }
+  .hero { min-height: 100lvh; padding-block: 128px 32px; }
+  .hero .container { grid-template-rows: auto auto 1fr; }
+  .actions .btn { width: 100%; }
+  .facts dt, .pair dt, .bar .head b, .sdg .code { font-size: 28px; }
+  .statement { font-size: 28px; }
+  blockquote p { font-size: 20px; }
+  .versus, .pair { grid-template-columns: minmax(0, 1fr); }
+  .chain { grid-template-columns: minmax(0, 1fr); }
+  .chain .arrow { transform: rotate(90deg); }
+  .refs { columns: 1; }
+  .frame .poster { padding: 20px; }
+  .frame .play { width: 56px; height: 56px; }
+  .app { padding: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0s !important; animation: none !important; }
+}
+</style>
+
+</head>
+<body>
+<a class="skip" href="#alur">Lewati ke materi</a>
+
+<header class="nav">
+  <div class="container">
+    <a class="brand" href="#mulai"><span class="mark" aria-hidden="true"></span>Civic Integrity</a>
+    <ul>
+      <li><a href="#materi">Materi</a></li>
+      <li><a href="#survei">Survei</a></li>
+      <li><a href="#hambatan">Hambatan</a></li>
+      <li><a href="#tindakan">Tindakan</a></li>
+      <li><a href="#nilai">Nilai</a></li>
+    </ul>
+    <a class="btn btn--primary js-pretest" href="#mulai">Kerjakan pre-test</a>
+    <button class="menu-btn" type="button" aria-label="Buka menu" aria-expanded="false" aria-controls="sheet"><svg class="ico" viewBox="0 0 256 256" aria-hidden="true"><path d="M208,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM192,184H64a8,8,0,0,1,0-16H192a8,8,0,0,1,0,16Zm0-48H64a8,8,0,0,1,0-16H192a8,8,0,0,1,0,16Zm0-48H64a8,8,0,0,1,0-16H192a8,8,0,0,1,0,16Z"/></svg></button>
+  </div>
+</header>
+
+<div class="sheet" id="sheet" hidden>
+  <div class="top">
+    <a class="brand" href="#mulai"><span class="mark" aria-hidden="true"></span>Civic Integrity</a>
+    <button class="menu-btn" type="button" aria-label="Tutup menu" style="display:inline-flex"><svg class="ico" viewBox="0 0 256 256" aria-hidden="true"><path d="M208,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM181.66,170.34a8,8,0,0,1-11.32,11.32L128,139.31,85.66,181.66a8,8,0,0,1-11.32-11.32L116.69,128,74.34,85.66A8,8,0,0,1,85.66,74.34L128,116.69l42.34-42.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/></svg></button>
+  </div>
+  <ul>
+    <li><a href="#alur">Alur</a></li>
+    <li><a href="#materi">Materi</a></li>
+    <li><a href="#survei">Survei</a></li>
+    <li><a href="#hambatan">Hambatan</a></li>
+    <li><a href="#tindakan">Tindakan</a></li>
+    <li><a href="#nilai">Nilai</a></li>
+    <li><a href="#post-test">Post-test</a></li>
+  </ul>
+  <a class="btn btn--primary js-pretest" href="#mulai" style="height:48px; margin-top:24px">Kerjakan pre-test</a>
+</div>
+
+<main>
+  <section class="hero" id="mulai" data-enter>
+    <div class="container">
+      <h1>Edukasi antikorupsi untuk mahasiswa Telkom University</h1>
+      <div style="display:grid; gap:32px; align-content:start">
+        <p class="lead" data-rise>Kerjakan pre-test, pelajari cara mengenali dan menegur kecurangan di kampus lewat video dan materi, lalu kerjakan post-test untuk melihat perubahan pemahamanmu.</p>
+        <div data-rise>
+          <div class="actions">
+            <a class="btn btn--primary js-pretest" id="hero-pretest" href="#mulai" target="_blank" rel="noopener">Kerjakan pre-test</a>
+            <a class="link" href="#alur">Lihat alur program</a>
+          </div>
+          <p class="small js-pending" style="margin-top:12px" hidden>Link Google Form dipasang sebelum program dimulai.</p>
+        </div>
+      </div>
+      <div data-rise style="display:grid; gap:12px">
+        <dl class="facts">
+          <div><dt>91,7%</dt><dd>responden pernah mengetahui teman berbuat curang</dd></div>
+          <div><dt class="hot">44,4%</dt><dd>memilih diam dan membiarkan</dd></div>
+          <div><dt>2,8%</dt><dd>melapor ke dosen, 1 dari 36 orang</dd></div>
+          <div><dt>3,31 dari 5</dt><dd>rasa aman untuk melapor</dd></div>
+        </dl>
+        <p class="source">Survei daring 36 mahasiswa aktif Telkom University, Oktober 2026, snowball sampling.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="alur" class="alt">
+    <div class="container grid">
+      <div class="text">
+        <h2>Alur program dalam tiga langkah</h2>
+        <ol class="steps">
+          <li><span><b class="st">Pre-test.</b> Jawab dulu sebelum membaca materi, supaya pemahaman awalmu tercatat.</span></li>
+          <li><span><b class="st">Video dan materi.</b> Tonton videonya, lalu baca materi di halaman ini sampai bagian nilai Pancasila.</span></li>
+          <li><span><b class="st">Post-test.</b> Kerjakan dengan identitas yang sama seperti saat pre-test agar hasilnya bisa dibandingkan.</span></li>
+        </ol>
+      </div>
+      <div class="visual">
+        <video class="clip" src="video.mp4" poster="poster.jpg" controls playsinline preload="metadata" width="1080" height="1920" aria-label="Video edukasi: bagaimana kalau setiap bukan urusan saya jadi kenyataan"></video>
+      </div>
+    </div>
+  </section>
+
+  <section id="materi">
+    <div class="container grid">
+      <div class="text">
+        <h2>Korupsi kecil di kampus</h2>
+        <p class="lead">Korupsi tidak selalu soal uang miliaran. Polanya sama setiap kali seseorang mengambil keuntungan secara tidak jujur dan merugikan orang lain.</p>
+        <p>Kebiasaan ini terbawa keluar kampus. Ketidakjujuran akademik berkaitan dengan ketidakjujuran di tempat kerja (Nonis &amp; Swift, 2001), dan penyimpangan yang dibiarkan lama-lama dianggap normal (Ashforth &amp; Anand, 2003).</p>
+        <dl class="pair">
+          <div><dt>34</dt><dd>skor Indeks Persepsi Korupsi Indonesia 2025, peringkat 109 dari 180 negara (Adzkia, 2026)</dd></div>
+          <div><dt>98%</dt><dd>kampus ditemukan praktik menyontek dalam SPI Pendidikan KPK 2024 (kumparanNEWS, 2025)</dd></div>
+        </dl>
+      </div>
+      <div class="visual">
+        <ul class="rows">
+          <li><svg class="ico" viewBox="0 0 256 256" aria-hidden="true"><path d="M96,113.89,107.06,136H84.94ZM232,56V216a8,8,0,0,1-11.58,7.16L192,208.94l-28.42,14.22a8,8,0,0,1-7.16,0L128,208.94,99.58,223.16a8,8,0,0,1-7.16,0L64,208.94,35.58,223.16A8,8,0,0,1,24,216V56A16,16,0,0,1,40,40H216A16,16,0,0,1,232,56ZM135.16,156.42l-32-64a8,8,0,0,0-14.32,0l-32,64a8,8,0,0,0,14.32,7.16L76.94,152h38.12l5.78,11.58a8,8,0,1,0,14.32-7.16ZM208,128a8,8,0,0,0-8-8H184V104a8,8,0,0,0-16,0v16H152a8,8,0,0,0,0,16h16v16a8,8,0,0,0,16,0V136h16A8,8,0,0,0,208,128Z"/></svg><b>Menyontek saat ujian</b><span>Mendapat nilai yang bukan hasil sendiri</span></li>
+          <li><svg class="ico" viewBox="0 0 256 256" aria-hidden="true"><path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32Zm-8,128H176V88a8,8,0,0,0-8-8H96V48H208Z"/></svg><b>Plagiarisme tugas</b><span>Mengakui karya orang lain sebagai karya sendiri</span></li>
+          <li><svg class="ico" viewBox="0 0 256 256" aria-hidden="true"><path d="M80.3,120.26A58.29,58.29,0,0,1,81,97.07C83.32,87,87.89,80,92.1,80c2.57,0,2.94.67,3.12,1,.88,1.61,4,10.93-12.63,46.52A28.87,28.87,0,0,1,80.3,120.26ZM232,56V200a16,16,0,0,1-16,16H40a16,16,0,0,1-16-16V56A16,16,0,0,1,40,40H216A16,16,0,0,1,232,56ZM84,160c2-3.59,3.94-7.32,5.9-11.14,10.34-.32,22.21-7.57,35.47-21.68,5,9.69,11.38,15.25,18.87,16.55,8,1.38,16-2.38,23.94-11.2,6,5.53,16.15,11.47,31.8,11.47a8,8,0,0,0,0-16c-17.91,0-24.3-10.88-24.84-11.86a7.83,7.83,0,0,0-6.54-4.51,8,8,0,0,0-7.25,3.6c-6.78,10-11.87,13.16-14.39,12.73-4-.69-9.15-10-11.23-18a8,8,0,0,0-14-3c-8.88,10.94-16.3,17.79-22.13,21.66,15.8-35.65,13.27-48.59,9.6-55.3C107.35,69.84,102.59,64,92.1,64,79.66,64,69.68,75,65.41,93.46a75,75,0,0,0-.83,29.81c1.7,8.9,5.17,15.73,10.16,20.12-3,5.81-6.09,11.43-9,16.61H56a8,8,0,0,0,0,16h.44c-4.26,7.12-7.11,11.59-7.18,11.69a8,8,0,0,0,13.48,8.62c.36-.55,5.47-8.57,12.29-20.31H200a8,8,0,0,0,0-16Z"/></svg><b>Titip absen</b><span>Memalsukan kehadiran di kelas</span></li>
+          <li><svg class="ico" viewBox="0 0 256 256" aria-hidden="true"><path d="M184,89.57V84c0-25.08-37.83-44-88-44S8,58.92,8,84v40c0,20.89,26.25,37.49,64,42.46V172c0,25.08,37.83,44,88,44s88-18.92,88-44V132C248,111.3,222.58,94.68,184,89.57ZM56,146.87C36.41,141.4,24,132.39,24,124V109.93c8.16,5.78,19.09,10.44,32,13.57Zm80-23.37c12.91-3.13,23.84-7.79,32-13.57V124c0,8.39-12.41,17.4-32,22.87Zm-16,71.37C100.41,189.4,88,180.39,88,172v-4.17c2.63.1,5.29.17,8,.17,3.88,0,7.67-.13,11.39-.35A121.92,121.92,0,0,0,120,171.41Zm0-44.62A163,163,0,0,1,96,152a163,163,0,0,1-24-1.75V126.46A183.74,183.74,0,0,0,96,128a183.74,183.74,0,0,0,24-1.54Zm64,48a165.45,165.45,0,0,1-48,0V174.4a179.48,179.48,0,0,0,24,1.6,183.74,183.74,0,0,0,24-1.54ZM232,172c0,8.39-12.41,17.4-32,22.87V171.5c12.91-3.13,23.84-7.79,32-13.57Z"/></svg><b>Memakai uang kas untuk keperluan pribadi</b><span>Menyalahgunakan dana milik bersama</span></li>
+          <li><svg class="ico" viewBox="0 0 256 256" aria-hidden="true"><path d="M216,40H40A16,16,0,0,0,24,56V208a8,8,0,0,0,11.58,7.15L64,200.94l28.42,14.21a8,8,0,0,0,7.16,0L128,200.94l28.42,14.21a8,8,0,0,0,7.16,0L192,200.94l28.42,14.21A8,8,0,0,0,232,208V56A16,16,0,0,0,216,40ZM176,144H80a8,8,0,0,1,0-16h96a8,8,0,0,1,0,16Zm0-32H80a8,8,0,0,1,0-16h96a8,8,0,0,1,0,16Z"/></svg><b>Menggelembungkan anggaran kegiatan</b><span>Melaporkan biaya lebih besar dari yang sebenarnya</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="survei" class="dark">
+    <div class="container grid">
+      <div class="text">
+        <h2>Survei 36 mahasiswa Telkom University</h2>
+        <p class="lead">Responden setuju bahwa penyalahgunaan dana organisasi sekecil apa pun adalah korupsi (skor 4,69 dari 5) dan tidak setuju bahwa melaporkan teman adalah pengkhianatan (skor 2,14).</p>
+        <p>Namun, keberanian bertindak berbeda jauh antara kasus uang dan kasus akademik. Sikapnya sudah antikorupsi, tindakannya belum.</p>
+        <p class="small">Pilihan jawaban kedua skenario berbeda, sehingga perbandingannya bersifat deskriptif. Hasil hanya menggambarkan kelompok responden.</p>
+      </div>
+      <div class="visual chart" role="img" aria-label="Persentase responden yang langsung bertindak: 97,2 persen pada kasus uang kas, 25,0 persen pada kasus menyontek saat UAS">
+        <div class="bar">
+          <div class="head"><span>Bendahara memakai uang kas organisasi. Responden yang menegur atau melapor</span><b>97,2%</b></div>
+          <div class="track"><span class="fill" style="width:97.2%"></span></div>
+        </div>
+        <div class="bar">
+          <div class="head"><span>Sahabat menyontek saat UAS. Responden yang langsung menegur atau melapor ke pengawas</span><b class="hot">25,0%</b></div>
+          <div class="track"><span class="fill hot" style="width:25%"></span></div>
+        </div>
+        <p class="small">Pada kasus menyontek, 41,7% memilih menegur setelah UAS dan 27,8% pura-pura tidak tahu.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="hambatan">
+    <div class="container grid">
+      <div class="text">
+        <h2>Tiga hambatan untuk bertindak</h2>
+        <ul class="barriers">
+          <li><h3><i class="c-ind"></i>Individual</h3><p class="muted">Merasa itu bukan urusan sendiri. Setiap orang menunggu orang lain bertindak, disebut difusi tanggung jawab (Darley &amp; Latané, 1968).</p></li>
+          <li><h3><i class="c-rel"></i>Relasional</h3><p class="muted">Tidak enak hati, takut dicap pengadu, dan ingin menjaga solidaritas. Loyalitas berbenturan dengan keadilan (Waytz et al., 2013).</p></li>
+          <li><h3><i class="c-ins"></i>Institusional</h3><p class="muted">Tidak tahu saluran pelaporan dan tidak percaya laporan akan ditindaklanjuti.</p></li>
+        </ul>
+      </div>
+      <div class="visual" style="display:grid; gap:20px; align-content:start">
+        <p class="muted">Alasan responden tidak bertindak saat mengetahui kecurangan. Responden boleh memilih lebih dari satu.</p>
+        <ul class="reasons" role="img" aria-label="Alasan tidak bertindak: merasa bukan urusan sendiri 61,1 persen, tidak enak hati 27,8 persen, tidak tahu harus melapor ke mana 16,7 persen, tidak percaya laporan ditindaklanjuti 16,7 persen, takut dicap pengadu 13,9 persen, menjaga solidaritas 13,9 persen, menganggap sudah biasa 11,1 persen">
+          <li><span>Merasa bukan urusan sendiri</span><span class="v">61,1%</span><span class="track"><span class="fill c-ind" style="width:61.1%"></span></span></li>
+          <li><span>Tidak enak hati</span><span class="v">27,8%</span><span class="track"><span class="fill c-rel" style="width:27.8%"></span></span></li>
+          <li><span>Tidak tahu harus melapor ke mana</span><span class="v">16,7%</span><span class="track"><span class="fill c-ins" style="width:16.7%"></span></span></li>
+          <li><span>Tidak percaya laporan ditindaklanjuti</span><span class="v">16,7%</span><span class="track"><span class="fill c-ins" style="width:16.7%"></span></span></li>
+          <li><span>Takut dicap pengadu</span><span class="v">13,9%</span><span class="track"><span class="fill c-rel" style="width:13.9%"></span></span></li>
+          <li><span>Menjaga solidaritas</span><span class="v">13,9%</span><span class="track"><span class="fill c-rel" style="width:13.9%"></span></span></li>
+          <li><span>Menganggap sudah biasa</span><span class="v">11,1%</span><span class="track"><span class="fill c-lain" style="width:11.1%"></span></span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="solidaritas" class="alt">
+    <div class="container grid" style="row-gap:48px">
+      <div class="full" style="display:grid; gap:32px">
+        <h2>Solidaritas sehat dan solidaritas toksik</h2>
+        <p class="statement" data-highlight>Teman sejati menegur, bukan menutupi. Solidaritas yang bertanggung jawab berarti membantu teman memperbaiki kesalahan.</p>
+        <p class="muted" style="max-width:40em">Tidak ada responden yang menganggap melindungi teman curang sebagai solidaritas, tetapi 41,7% menjawab tergantung situasi.</p>
+      </div>
+      <div class="text">
+        <blockquote>
+          <p>“Solidaritas sehat itu basisnya nilai, sedangkan solidaritas toksik itu basisnya circle.”</p>
+          <cite>Responden 8</cite>
+        </blockquote>
+      </div>
+      <div class="visual versus">
+        <div><h3>Sehat</h3><ul><li>Dasarnya nilai bersama</li><li>Menegur teman yang berbuat salah</li><li>Membantu teman memperbaiki kesalahan</li></ul></div>
+        <div class="toxic"><h3>Toksik</h3><ul><li>Dasarnya kedekatan kelompok</li><li>Menutupi pelanggaran teman</li><li>Ikut diam supaya tidak dicap pengadu</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tindakan">
+    <div class="container grid">
+      <div class="text">
+        <h2>Tiga hal yang bisa kamu lakukan</h2>
+        <ul class="acts">
+          <li>
+            <h3><svg class="ico" viewBox="0 0 256 256" aria-hidden="true"><path d="M128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24ZM84,140a12,12,0,1,1,12-12A12,12,0,0,1,84,140Zm44,0a12,12,0,1,1,12-12A12,12,0,0,1,128,140Zm44,0a12,12,0,1,1,12-12A12,12,0,0,1,172,140Z"/></svg>Berani menegur</h3>
+            <ol>
+              <li>Bicara berdua, tidak di depan orang lain.</li>
+              <li>Bahas perbuatannya, bukan orangnya.</li>
+              <li>Jelaskan dampaknya bagi mahasiswa lain yang jujur.</li>
+              <li>Tawarkan bantuan, misalnya belajar bersama.</li>
+            </ol>
+          </li>
+          <li>
+            <h3><svg class="ico" viewBox="0 0 256 256" aria-hidden="true"><path d="M208,40H48A16,16,0,0,0,32,56v56c0,52.72,25.52,84.67,46.93,102.19,23.06,18.86,46,25.26,47,25.53a8,8,0,0,0,4.2,0c1-.27,23.91-6.67,47-25.53C198.48,196.67,224,164.72,224,112V56A16,16,0,0,0,208,40Zm-34.32,69.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z"/></svg>Lapor Aman <span class="chip">Rancangan</span></h3>
+            <p class="muted">Formulir anonim yang diverifikasi dua pengurus CIM dan satu dosen pendamping dalam tujuh hari, lalu diteruskan ke prodi atau pembina organisasi. 72,2% responden menilai jaminan kerahasiaan paling mendorong keberanian melapor.</p>
+            <p class="small">Selama kanal ini belum berjalan, kasus akademik bisa disampaikan ke dosen pengampu atau program studi, dan kasus dana ke pembina organisasi.</p>
+          </li>
+          <li>
+            <h3><svg class="ico" viewBox="0 0 256 256" aria-hidden="true"><path d="M240,56V200a8,8,0,0,1-8,8H160a24,24,0,0,0-24,23.94,7.9,7.9,0,0,1-5.12,7.55A8,8,0,0,1,120,232a24,24,0,0,0-24-24H24a8,8,0,0,1-8-8V56a8,8,0,0,1,8-8H88a32,32,0,0,1,32,32v87.73a8.17,8.17,0,0,0,7.47,8.25,8,8,0,0,0,8.53-8V80a32,32,0,0,1,32-32h64A8,8,0,0,1,240,56Z"/></svg>Kas Terbuka</h3>
+            <p class="muted">Pengurus menerbitkan laporan kas organisasi setiap bulan, dan anggota terbiasa bertanya ke mana uang kas digunakan.</p>
+          </li>
+        </ul>
+      </div>
+      <div class="visual">
+        <div class="app" role="img" aria-label="Rancangan tampilan formulir Lapor Aman: isian waktu, tempat, uraian, dan bukti, tombol kirim, serta status laporan">
+          <div class="bar-top"><b><svg class="ico" viewBox="0 0 256 256" aria-hidden="true"><path d="M208,40H48A16,16,0,0,0,32,56v56c0,52.72,25.52,84.67,46.93,102.19,23.06,18.86,46,25.26,47,25.53a8,8,0,0,0,4.2,0c1-.27,23.91-6.67,47-25.53C198.48,196.67,224,164.72,224,112V56A16,16,0,0,0,208,40Zm-34.32,69.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z"/></svg>Lapor Aman</b><span class="chip">Tanpa nama dan email</span></div>
+          <div class="field"><label>Kapan terjadi</label><div class="box">Tanggal dan jam kejadian</div></div>
+          <div class="field"><label>Di mana</label><div class="box">Kelas, ujian, atau kegiatan</div></div>
+          <div class="field"><label>Apa yang terjadi</label><div class="box tall">Ceritakan kejadiannya</div></div>
+          <div class="field"><label>Bukti</label><div class="box">Foto atau dokumen bila ada</div></div>
+          <div class="send">Kirim laporan</div>
+          <div class="status"><div class="done">Diterima</div><div class="done">Diverifikasi</div><div>Ditindaklanjuti</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="nilai">
+    <div class="container grid" style="row-gap:48px">
+      <div class="full" style="display:grid; gap:24px">
+        <h2>Nilai Pancasila dan SDGs 16</h2>
+        <p class="lead" style="max-width:40em">Menurut Kaelan (2016), nilai Pancasila terdiri atas nilai dasar, nilai instrumental, dan nilai praksis. Survei kami menunjukkan titik lemahnya ada di nilai instrumental.</p>
+        <div class="chain" role="img" aria-label="Nilai dasar sudah dipahami, nilai instrumental masih lemah, nilai praksis belum terwujud">
+          <div class="node"><h3>Nilai dasar</h3><p class="muted">Kejujuran sudah dipahami</p></div>
+          <div class="arrow"><svg class="ico" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72A8,8,0,0,1,136,200V136H40a8,8,0,0,1,0-16h96V56a8,8,0,0,1,13.66-5.66l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></div>
+          <div class="node weak"><h3>Nilai instrumental</h3><p class="muted">Aturan dan sistem pendukungnya masih lemah</p></div>
+          <div class="arrow"><svg class="ico" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72A8,8,0,0,1,136,200V136H40a8,8,0,0,1,0-16h96V56a8,8,0,0,1,13.66-5.66l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></div>
+          <div class="node"><h3>Nilai praksis</h3><p class="muted">Tindakan nyata belum terwujud</p></div>
+        </div>
+      </div>
+      <div class="text" style="grid-column: 1 / span 6">
+        <ol class="sila">
+          <li><span class="n">1</span><span><b style="font-weight:500">Kejujuran.</b> <span class="muted">Jujur saat ujian dan saat mengelola dana organisasi.</span></span></li>
+          <li><span class="n">2</span><span><b style="font-weight:500">Kemanusiaan dan tanggung jawab.</b> <span class="muted">Peduli pada sesama, bukan berkata “bukan urusan saya”.</span></span></li>
+          <li><span class="n">3</span><span><b style="font-weight:500">Persatuan berlandaskan nilai.</b> <span class="muted">Bukan kesetiaan buta yang menutupi pelanggaran.</span></span></li>
+          <li><span class="n">4</span><span><b style="font-weight:500">Akuntabilitas.</b> <span class="muted">Dana organisasi dipertanggungjawabkan secara terbuka.</span></span></li>
+          <li><span class="n">5</span><span><b style="font-weight:500">Keadilan.</b> <span class="muted">Menyontek merugikan mahasiswa yang jujur.</span></span></li>
+        </ol>
+      </div>
+      <div class="visual sdg" style="grid-column: 8 / span 5">
+        <p class="code">SDGs 16</p>
+        <p>Perdamaian, Keadilan, dan Kelembagaan yang Tangguh</p>
+        <dl>
+          <div><dt>Target 16.5</dt><dd>Mengurangi korupsi dan penyuapan secara substansial.</dd></div>
+          <div><dt>Target 16.6</dt><dd>Mengembangkan lembaga yang efektif, akuntabel, dan transparan.</dd></div>
+        </dl>
+        <p class="small">Kanal pelaporan yang aman dan akuntabel di kampus sejalan dengan target 16.6 (United Nations, 2015).</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="closing" id="post-test">
+  <div class="container close">
+    <h2>Post-test</h2>
+    <p class="lead">Kerjakan setelah menonton video dan membaca materi. Gunakan identitas yang sama seperti saat pre-test supaya hasilnya bisa dibandingkan.</p>
+    <a class="btn btn--primary" id="close-posttest" href="#post-test" target="_blank" rel="noopener">Kerjakan post-test</a>
+    <p class="small js-pending" hidden>Link Google Form dipasang sebelum program dimulai.</p>
+  </div>
+  <div class="container foot">
+    <nav aria-label="Bagian halaman"><ul>
+      <li><a href="#alur">Alur</a></li><li><a href="#materi">Materi</a></li><li><a href="#survei">Survei</a></li>
+      <li><a href="#hambatan">Hambatan</a></li><li><a href="#tindakan">Tindakan</a></li><li><a href="#nilai">Nilai</a></li>
+    </ul></nav>
+    <ol class="refs">
+      <li>Adzkia, M. (2026). Indeks Persepsi Korupsi Indonesia turun karena melemahnya independensi KPK. NU Online.</li>
+      <li>Ashforth, B. E., &amp; Anand, V. (2003). The normalization of corruption in organizations. Research in Organizational Behavior, 25, 1–52.</li>
+      <li>Darley, J. M., &amp; Latané, B. (1968). Bystander intervention in emergencies: Diffusion of responsibility. Journal of Personality and Social Psychology, 8(4), 377–383.</li>
+      <li>Kaelan. (2016). Pendidikan Pancasila. Paradigma.</li>
+      <li>kumparanNEWS. (2025). Saat survei KPK sebut menyontek di sekolah masih tinggi. kumparan.</li>
+      <li>Nonis, S., &amp; Swift, C. O. (2001). An examination of the relationship between academic dishonesty and workplace dishonesty. Journal of Education for Business, 77(2), 69–77.</li>
+      <li>United Nations. (2015). Transforming our world: The 2030 Agenda for Sustainable Development.</li>
+      <li>Waytz, A., Dungan, J., &amp; Young, L. (2013). The whistleblower’s dilemma and the fairness–loyalty tradeoff. Journal of Experimental Social Psychology, 49, 1027–1033.</li>
+    </ol>
+    <div class="legal"><span>Civic Integrity Movement · Pendidikan Kewarganegaraan (TB4703) · Universitas Telkom · 2026</span><span>Ikon: Phosphor Icons</span></div>
+  </div>
+</footer>
+
+<script>
+// Isi setelah Google Form dan video siap. Kosong berarti tombol tampil sebagai "belum tersedia".
+const LINKS = {
+  pretest: "",
+  posttest: ""
+};
+
+(function () {
+  function off(el, label) {
+    var s = document.createElement("span");
+    s.className = "btn btn--off";
+    s.setAttribute("aria-disabled", "true");
+    s.textContent = label;
+    if (el.style.cssText) s.style.cssText = el.style.cssText;
+    el.replaceWith(s);
+  }
+  var pending = false;
+  document.querySelectorAll(".js-pretest").forEach(function (a) {
+    if (LINKS.pretest) { a.href = LINKS.pretest; a.target = "_blank"; a.rel = "noopener"; }
+    else if (a.id === "hero-pretest") { off(a, "Link pre-test segera dipasang"); pending = true; }
+  });
+  var post = document.getElementById("close-posttest");
+  if (LINKS.posttest) post.href = LINKS.posttest; else { off(post, "Link post-test segera dipasang"); pending = true; }
+  if (pending) document.querySelectorAll(".js-pending").forEach(function (p) { p.hidden = false; });
+  // Menu ponsel
+  var sheet = document.getElementById("sheet");
+  var openBtn = document.querySelector(".nav .menu-btn");
+  var closeBtn = sheet.querySelector(".menu-btn");
+  function setMenu(open) {
+    sheet.hidden = !open; openBtn.setAttribute("aria-expanded", String(open));
+    document.body.style.overflow = open ? "hidden" : "";
+    (open ? closeBtn : openBtn).focus();
+  }
+  openBtn.addEventListener("click", function () { setMenu(true); });
+  closeBtn.addEventListener("click", function () { setMenu(false); });
+  sheet.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", function () { setMenu(false); }); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !sheet.hidden) setMenu(false); });
+
+  // Momen: kata demi kata menebal saat bagian solidaritas digulir
+  var st = document.querySelector("[data-highlight]");
+  if (st && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    var words = st.textContent.trim().split(/\s+/);
+    st.textContent = "";
+    var spans = words.map(function (w, i) {
+      var s = document.createElement("span"); s.className = "wd"; s.textContent = w;
+      st.append(s); if (i < words.length - 1) st.append(" "); return s;
+    });
+    document.documentElement.classList.add("js-hl");
+    var ticking = false;
+    function update() {
+      ticking = false;
+      var r = st.getBoundingClientRect(), vh = innerHeight;
+      var p = Math.min(1, Math.max(0, (vh * 0.85 - r.top) / (vh * 0.5)));
+      var n = Math.round(p * spans.length);
+      spans.forEach(function (s, i) { s.classList.toggle("on", i < n); });
+    }
+    addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    addEventListener("resize", update);
+    update();
+  }
+})();
+</script>
+<script type="module">
+const root=document.documentElement,hero=document.querySelector('[data-enter]');
+const h1=hero?.querySelector('h1');
+const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const late=root.classList.contains('m-enter-done');
+if(hero&&h1&&!still&&!late){
+  hero.classList.add('is-entering');
+  const words=h1.textContent.trim().split(/\s+/);h1.textContent='';
+  words.forEach((w,i)=>{const o=document.createElement('span'),n=document.createElement('span');o.className='w';n.textContent=w;o.append(n);h1.append(o);if(i<words.length-1)h1.append(' ')});
+  const spans=[...h1.querySelectorAll('.w>span')],tops=[...new Set(spans.map(s=>s.parentElement.offsetTop))];
+  spans.forEach(s=>s.style.transitionDelay=Math.min(tops.indexOf(s.parentElement.offsetTop)*80,240)+'ms');
+  const lastLine=Math.min((tops.length-1)*80,240);
+  hero.querySelectorAll('[data-rise]').forEach((el,i)=>el.style.transitionDelay=(lastLine+350+i*60)+'ms');
+  root.classList.add('m-enter-done');
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{hero.classList.replace('is-entering','is-in');
+    setTimeout(()=>{hero.classList.replace('is-in','is-entered');hero.querySelectorAll('[data-rise],.w>span').forEach(el=>el.style.transitionDelay='')},lastLine+350+600+hero.querySelectorAll('[data-rise]').length*60+1100)}));
+}else root.classList.add('m-enter-done');
+</script>
+
+</body>
+</html>
