@@ -507,7 +507,14 @@ footer.closing { display: grid; align-content: space-between; gap: 72px; backgro
         <form class="app" id="lapor" novalidate aria-label="Simulasi formulir Lapor Aman">
           <div class="bar-top"><b><svg class="ico" viewBox="0 0 256 256" aria-hidden="true"><path d="M208,40H48A16,16,0,0,0,32,56v56c0,52.72,25.52,84.67,46.93,102.19,23.06,18.86,46,25.26,47,25.53a8,8,0,0,0,4.2,0c1-.27,23.91-6.67,47-25.53C198.48,196.67,224,164.72,224,112V56A16,16,0,0,0,208,40Zm-34.32,69.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z"/></svg>Lapor Aman</b><span class="chip">Tanpa nama dan email</span></div>
           <div class="lapor-fields">
-            <div class="field"><label for="la-when">Kapan terjadi</label><input id="la-when" name="when" type="datetime-local" required aria-describedby="la-when-err"><span class="err" id="la-when-err" hidden>Isi tanggal dan jam kejadian, paling lambat hari ini.</span></div>
+            <div class="field"><label for="la-when">Kapan terjadi</label><select id="la-when" name="when" required aria-describedby="la-when-err">
+              <option value="" selected disabled>Perkiraan waktu kejadian</option>
+              <option>Hari ini</option>
+              <option>Kemarin</option>
+              <option>Minggu ini</option>
+              <option>Bulan ini</option>
+              <option>Lebih dari sebulan lalu</option>
+            </select><span class="err" id="la-when-err" hidden>Pilih perkiraan waktu kejadian.</span></div>
             <div class="field"><label for="la-where">Di mana</label><select id="la-where" name="where" required aria-describedby="la-where-err">
               <option value="" selected disabled>Kelas, ujian, atau kegiatan</option>
               <option>Ujian atau kuis</option>
@@ -626,18 +633,15 @@ const LINKS = {
     var when = form.elements.when, where = form.elements.where, what = form.elements.what, file = form.elements.file;
     var fileName = document.getElementById("la-file-name"), fileDefault = fileName.textContent;
     var steps = form.querySelectorAll(".status div"), timers = [];
-    var pad = function (n) { return String(n).padStart(2, "0"); };
-    var now = new Date();
-    when.max = now.getFullYear() + "-" + pad(now.getMonth() + 1) + "-" + pad(now.getDate()) + "T" + pad(now.getHours()) + ":" + pad(now.getMinutes());
     var check = function (el) {
       var v = el.value.trim();
-      var bad = !v || (el === what && v.length < 15) || (el === when && v > when.max);
+      var bad = !v || (el === what && v.length < 15);
       el.setAttribute("aria-invalid", bad ? "true" : "false");
       document.getElementById(el.id + "-err").hidden = !bad;
       return bad;
     };
     [when, where, what].forEach(function (el) {
-      el.addEventListener(el === where ? "change" : "input", function () { if (el.getAttribute("aria-invalid") === "true") check(el); });
+      el.addEventListener(el.tagName === "SELECT" ? "change" : "input", function () { if (el.getAttribute("aria-invalid") === "true") check(el); });
     });
     file.addEventListener("change", function () {
       var has = file.files.length > 0;
