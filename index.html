@@ -188,7 +188,12 @@ blockquote cite { font-style: normal; font-size: 14px; color: var(--muted); }
 .field :is(input, select):invalid { color: var(--muted); }
 .field :is(input, select, textarea):focus-visible, .sr:focus-visible + .file { outline: 2px solid var(--accent); outline-offset: 2px; }
 .field [aria-invalid="true"] { border-color: var(--accent); }
-.field .err { font-size: 13px; line-height: 18px; color: var(--accent); }
+.field .err, .field-row .err { font-size: 13px; line-height: 18px; color: var(--accent); }
+.field-row { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 6px 12px; }
+.field-row .err { grid-column: 1 / -1; }
+.field input[type="date"], .field input[type="time"] { -webkit-appearance: none; appearance: none; display: block; min-width: 0; max-width: 100%; text-align: left; line-height: 42px; }
+.field input::-webkit-date-and-time-value { text-align: left; margin: 0; }
+.field input::-webkit-calendar-picker-indicator { opacity: .55; cursor: pointer; }
 .file { cursor: pointer; overflow: hidden; }
 .file span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .file.has { color: var(--ink); }
@@ -507,14 +512,11 @@ footer.closing { display: grid; align-content: space-between; gap: 72px; backgro
         <form class="app" id="lapor" novalidate aria-label="Simulasi formulir Lapor Aman">
           <div class="bar-top"><b><svg class="ico" viewBox="0 0 256 256" aria-hidden="true"><path d="M208,40H48A16,16,0,0,0,32,56v56c0,52.72,25.52,84.67,46.93,102.19,23.06,18.86,46,25.26,47,25.53a8,8,0,0,0,4.2,0c1-.27,23.91-6.67,47-25.53C198.48,196.67,224,164.72,224,112V56A16,16,0,0,0,208,40Zm-34.32,69.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z"/></svg>Lapor Aman</b><span class="chip">Tanpa nama dan email</span></div>
           <div class="lapor-fields">
-            <div class="field"><label for="la-when">Kapan terjadi</label><select id="la-when" name="when" required aria-describedby="la-when-err">
-              <option value="" selected disabled>Perkiraan waktu kejadian</option>
-              <option>Hari ini</option>
-              <option>Kemarin</option>
-              <option>Minggu ini</option>
-              <option>Bulan ini</option>
-              <option>Lebih dari sebulan lalu</option>
-            </select><span class="err" id="la-when-err" hidden>Pilih perkiraan waktu kejadian.</span></div>
+            <div class="field-row">
+              <div class="field"><label for="la-when">Tanggal kejadian</label><input id="la-when" name="when" type="date" required aria-describedby="la-when-err"></div>
+              <div class="field"><label for="la-time">Jam, bila ingat</label><input id="la-time" name="time" type="time"></div>
+              <span class="err" id="la-when-err" hidden>Isi tanggal kejadian, paling lambat hari ini.</span>
+            </div>
             <div class="field"><label for="la-where">Di mana</label><select id="la-where" name="where" required aria-describedby="la-where-err">
               <option value="" selected disabled>Kelas, ujian, atau kegiatan</option>
               <option>Ujian atau kuis</option>
@@ -633,9 +635,12 @@ const LINKS = {
     var when = form.elements.when, where = form.elements.where, what = form.elements.what, file = form.elements.file;
     var fileName = document.getElementById("la-file-name"), fileDefault = fileName.textContent;
     var steps = form.querySelectorAll(".status div"), timers = [];
+    var pad = function (n) { return String(n).padStart(2, "0"); };
+    var now = new Date(), today = now.getFullYear() + "-" + pad(now.getMonth() + 1) + "-" + pad(now.getDate());
+    when.max = today; when.defaultValue = today;
     var check = function (el) {
       var v = el.value.trim();
-      var bad = !v || (el === what && v.length < 15);
+      var bad = !v || (el === what && v.length < 15) || (el === when && v > when.max);
       el.setAttribute("aria-invalid", bad ? "true" : "false");
       document.getElementById(el.id + "-err").hidden = !bad;
       return bad;
