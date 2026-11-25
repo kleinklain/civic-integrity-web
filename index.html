@@ -2,6 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="utf-8">
+<script>document.documentElement.classList.add("js")</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#E8E1D5" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#111318" media="(prefers-color-scheme: dark)">
@@ -60,7 +61,7 @@
 }
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
-html { scroll-behavior: smooth; scroll-padding-top: 16px; -webkit-text-size-adjust: 100%; }
+html { scroll-behavior: smooth; scroll-padding-top: 84px; -webkit-text-size-adjust: 100%; }
 body { margin: 0; background: var(--bg); color: var(--ink); font: 400 16px/1.55 var(--sans); -webkit-font-smoothing: antialiased; }
 img, video { display: block; max-width: 100%; }
 h1, h2, h3, p, ul, ol, dl, dd, figure { margin: 0; }
@@ -278,6 +279,64 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .refs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 32px; }
 .legal { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 24px; }
 
+
+/* ===== gerak dan detail tambahan ===== */
+.idx { display: inline-flex; align-items: baseline; gap: 10px; }
+.idx b { font: italic 400 24px/1 var(--serif); letter-spacing: 0; text-transform: none; color: var(--accent-text); }
+.sec--deep .idx b { color: var(--accent); }
+.askcopy { display: grid; gap: 16px; min-width: 0; }
+.asksub { font-size: 17px; line-height: 1.5; max-width: 46ch; }
+.vcard { position: relative; display: block; height: 150px; border-radius: 14px; overflow: hidden; background: #1D2A4A; text-decoration: none; color: #fff; }
+.vcard img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; transition: transform 600ms var(--ease); }
+.vcard::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,.7)); }
+.vplay { position: absolute; z-index: 1; top: 10px; right: 10px; width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,.92); color: #1C211E; display: grid; place-items: center; font-size: 15px; }
+.vmeta { position: absolute; z-index: 1; left: 12px; bottom: 10px; display: grid; gap: 2px; }
+.vmeta .tag { color: rgba(255,255,255,.9); }
+.progress { position: fixed; z-index: 60; left: 0; top: 0; width: 100%; height: 3px; pointer-events: none; }
+.progress span { display: block; height: 100%; background: var(--accent); transform-origin: 0 50%; transform: scaleX(0); }
+.topnav { display: none; gap: 2px; }
+.topnav a { padding: 8px 14px; border-radius: 999px; text-decoration: none; font-weight: 500; font-size: 15px; color: var(--muted); transition: color 200ms var(--ease), background-color 200ms var(--ease); }
+.topnav a:hover, .topnav a.is-current { color: var(--ink); background: var(--hover); }
+.topcta { display: none; min-height: 40px; padding: 0 18px; }
+@media (min-width: 1200px) {
+  .topbar { display: flex; position: fixed; left: 50%; top: 12px; width: min(1280px, calc(100% - 48px)); transform: translate(-50%, -150%); opacity: 0; transition: transform 500ms var(--ease), opacity 300ms var(--ease); }
+  .topbar.show { transform: translate(-50%, 0); opacity: 1; }
+  .topnav, .topcta { display: flex; }
+  .topbar .menu-btn { display: none; }
+}
+.say { width: 100%; max-width: 1280px; padding: 104px 44px 88px; display: grid; gap: 22px; }
+.saytext { font: 400 66px/1.06 var(--serif); letter-spacing: -.015em; max-width: 20ch; }
+.saytext em { font-style: italic; }
+.js .saytext .w { color: color-mix(in srgb, var(--ink) 18%, transparent); transition: color 280ms var(--ease); }
+.js .saytext .w.on { color: var(--ink); }
+.js .saytext em .w.on { color: var(--accent-text); }
+.ticker { width: 100%; max-width: 1280px; overflow: hidden; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 20px 0; margin-bottom: 8px; }
+.tk { display: flex; align-items: center; gap: 28px; width: max-content; white-space: nowrap; font: 700 26px/1 var(--wide); letter-spacing: .01em; text-transform: uppercase; color: var(--muted); transform: translate3d(var(--tx, 0px), 0, 0); will-change: transform; }
+.tk i { font-style: normal; color: var(--accent); font-size: 22px; }
+.js .rv { opacity: 0; transform: translate3d(0, 28px, 0); transition: opacity 800ms var(--ease), transform 800ms var(--ease); transition-delay: calc(var(--i, 0) * 70ms); }
+.js .rv.in { opacity: 1; transform: none; }
+@media (hover: hover) and (pointer: fine) { .vcard:hover img { transform: scale(1.04); } }
+@media (prefers-reduced-motion: reduce) {
+  .js .rv { opacity: 1; transform: none; transition: none; }
+  .js .saytext .w { color: var(--ink); transition: none; }
+  .js .saytext em .w { color: var(--accent-text); }
+  .tk { transform: none; }
+  .topbar { transition: none; }
+}
+@media (max-width: 1199.98px) {
+  .saytext { font-size: 52px; }
+  .tk { font-size: 22px; }
+}
+@media (max-width: 809.98px) {
+  .say { padding: 56px 8px 44px; gap: 16px; }
+  .saytext { font-size: 38px; }
+  .tk { font-size: 18px; gap: 18px; }
+  .ticker { padding: 14px 0; }
+  .vcard { height: 170px; }
+  .asksub { font-size: 16px; }
+  .askrow { align-items: flex-start; }
+}
+
 /* hover layer */
 @media (hover: hover) and (pointer: fine) {
   .btn:hover, .precard:hover, .vidpill:hover { transform: translateY(-1px); }
@@ -358,8 +417,11 @@ button, input, select, textarea { font: inherit; color: inherit; }
 <div class="page">
   <header class="topbar">
     <a class="brand" href="#mulai"><span class="mark" aria-hidden="true"></span>Civic Integrity</a>
+    <nav class="topnav" aria-label="Pintasan bagian"><a href="#alur">Alur</a><a href="#materi">Materi</a><a href="#survei">Survei</a><a href="#tindakan">Tindakan</a><a href="#nilai">Nilai</a></nav>
+    <a class="btn btn--primary topcta" href="#post-test">Post-test<svg class="ico" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="sheet"><svg class="ico" viewBox="0 0 256 256" aria-hidden="true"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"/></svg>Menu</button>
   </header>
+  <div class="progress" aria-hidden="true"><span></span></div>
 
   <div class="sheet" id="sheet" hidden>
     <div class="top">
@@ -408,7 +470,10 @@ button, input, select, textarea { font: inherit; color: inherit; }
       <div class="ask">
         <span class="brand"><span class="mark" aria-hidden="true"></span>Civic Integrity</span>
         <div class="askrow">
-          <h1 class="display" id="judul">Tahu, lalu <span style="white-space:nowrap">bertindak<span class="caret" aria-hidden="true">_</span></span></h1>
+          <div class="askcopy">
+            <h1 class="display" id="judul">Tahu, lalu <span style="white-space:nowrap">bertindak<span class="caret" aria-hidden="true">_</span></span></h1>
+            <p class="asksub muted">Hampir semua responden kami pernah melihat teman berbuat curang. Yang jarang adalah berani mengatakan sesuatu.</p>
+          </div>
           <a class="bolt" href="#alur" aria-label="Lihat alur program"><svg class="ico" viewBox="0 0 256 256" aria-hidden="true"><path d="M215.79,118.17a8,8,0,0,0-5-5.66L153.18,90.9l14.66-73.33a8,8,0,0,0-13.69-7l-112,120a8,8,0,0,0,3,13l57.63,21.61L88.16,238.43a8,8,0,0,0,13.69,7l112-120A8,8,0,0,0,215.79,118.17ZM109.37,214l10.47-52.38a8,8,0,0,0-5-9.06L62,132.71l84.62-90.66L136.16,94.43a8,8,0,0,0,5,9.06l52.8,19.8Z"/></svg></a>
         </div>
       </div>
@@ -420,15 +485,15 @@ button, input, select, textarea { font: inherit; color: inherit; }
         </div>
         <div class="cards">
           <a class="pcard" href="#materi">
-            <span class="ptop"><img class="thumb" src="https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?crop=entropy&cs=srgb&fm=jpg&q=70&w=96&h=96&fit=crop" alt="" width="40" height="40" loading="lazy"><span class="tag tag--hot">Paling penting</span></span>
+            <span class="ptop"><img class="thumb" src="https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?crop=entropy&cs=srgb&fm=jpg&q=70&w=96&h=96&fit=crop" alt="" width="40" height="40" loading="lazy"><span class="tag tag--hot">02 Materi</span></span>
             <p>Korupsi kecil di kampus, dari titip absen sampai menggelembungkan anggaran kegiatan.</p>
           </a>
           <a class="pcard" href="#hambatan">
-            <span class="ptop"><img class="thumb" src="https://images.unsplash.com/photo-1758270705482-cee87ea98738?crop=entropy&cs=srgb&fm=jpg&q=70&w=96&h=96&fit=crop" alt="" width="40" height="40" loading="lazy"><span class="tag">Survei</span></span>
+            <span class="ptop"><img class="thumb" src="https://images.unsplash.com/photo-1758270705482-cee87ea98738?crop=entropy&cs=srgb&fm=jpg&q=70&w=96&h=96&fit=crop" alt="" width="40" height="40" loading="lazy"><span class="tag">04 Hambatan</span></span>
             <p>Kenapa 44,4% mahasiswa memilih diam saat tahu temannya curang?</p>
           </a>
           <a class="pcard" href="#tindakan">
-            <span class="ptop"><img class="thumb" src="https://images.unsplash.com/photo-1585143790814-b40d4b829e4a?crop=entropy&cs=srgb&fm=jpg&q=70&w=96&h=96&fit=crop" alt="" width="40" height="40" loading="lazy"><span class="tag">Tindakan</span></span>
+            <span class="ptop"><img class="thumb" src="https://images.unsplash.com/photo-1585143790814-b40d4b829e4a?crop=entropy&cs=srgb&fm=jpg&q=70&w=96&h=96&fit=crop" alt="" width="40" height="40" loading="lazy"><span class="tag">05 Tindakan</span></span>
             <p>Laporkan kecurangan lewat Lapor Aman, tanpa nama dan email.</p>
           </a>
         </div>
@@ -436,20 +501,19 @@ button, input, select, textarea { font: inherit; color: inherit; }
     </div>
 
     <aside class="ins" aria-label="Hasil survei">
-      <div class="hello"><span class="avatar"><svg class="ico" viewBox="0 0 256 256" aria-hidden="true"><path d="M226.53,56.41l-96-32a8,8,0,0,0-5.06,0l-96,32A8,8,0,0,0,24,64v80a8,8,0,0,0,16,0V75.1L73.59,86.29a64,64,0,0,0,20.65,88.05c-18,7.06-33.56,19.83-44.94,37.29a8,8,0,1,0,13.4,8.74C77.77,197.25,101.57,184,128,184s50.23,13.25,65.3,36.37a8,8,0,0,0,13.4-8.74c-11.38-17.46-27-30.23-44.94-37.29a64,64,0,0,0,20.65-88l44.12-14.7a8,8,0,0,0,0-15.18ZM176,120A48,48,0,1,1,89.35,91.55l36.12,12a8,8,0,0,0,5.06,0l36.12-12A47.89,47.89,0,0,1,176,120ZM128,87.57,57.3,64,128,40.43,198.7,64Z"/></svg></span><p>Selamat datang, mahasiswa Tel-U.</p></div>
+      <a class="vcard" href="#alur"><img src="poster.jpg" alt="" width="720" height="1280" loading="lazy"><span class="vplay"><svg class="ico" viewBox="0 0 256 256" aria-hidden="true"><path d="M232.4,114.49,88.32,26.35a16,16,0,0,0-16.2-.3A15.86,15.86,0,0,0,64,39.87V216.13A15.94,15.94,0,0,0,80,232a16.07,16.07,0,0,0,8.36-2.35L232.4,141.51a15.81,15.81,0,0,0,0-27ZM80,215.94V40l143.83,88Z"/></svg></span><span class="vmeta"><span class="tag">Tonton video · 1:15</span></span></a>
       <div class="ihead"><span class="label">Hasil survei</span><svg class="ico" viewBox="0 0 256 256" aria-hidden="true"><path d="M214.86,180.12a8,8,0,0,1-11,2.74L136,142.13V216a8,8,0,0,1-16,0V142.13L52.12,182.86a8,8,0,1,1-8.23-13.72L112.45,128,43.89,86.86a8,8,0,1,1,8.23-13.72L120,113.87V40a8,8,0,0,1,16,0v73.87l67.88-40.73a8,8,0,1,1,8.23,13.72L143.55,128l68.56,41.14A8,8,0,0,1,214.86,180.12Z"/></svg></div>
       <div class="irow"><svg class="ico" viewBox="0 0 256 256" aria-hidden="true"><path d="M247.31,124.76c-.35-.79-8.82-19.58-27.65-38.41C194.57,61.26,162.88,48,128,48S61.43,61.26,36.34,86.35C17.51,105.18,9,124,8.69,124.76a8,8,0,0,0,0,6.5c.35.79,8.82,19.57,27.65,38.4C61.43,194.74,93.12,208,128,208s66.57-13.26,91.66-38.34c18.83-18.83,27.3-37.61,27.65-38.4A8,8,0,0,0,247.31,124.76ZM128,192c-30.78,0-57.67-11.19-79.93-33.25A133.47,133.47,0,0,1,25,128,133.33,133.33,0,0,1,48.07,97.25C70.33,75.19,97.22,64,128,64s57.67,11.19,79.93,33.25A133.46,133.46,0,0,1,231.05,128C223.84,141.46,192.43,192,128,192Zm0-112a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Z"/></svg><div><span class="tag">Pernah tahu</span><p>91,7% responden pernah mengetahui teman berbuat curang.</p></div></div>
       <div class="irow"><svg class="ico" viewBox="0 0 256 256" aria-hidden="true"><path d="M188,88a27.75,27.75,0,0,0-12,2.71V60a28,28,0,0,0-41.36-24.6A28,28,0,0,0,80,44v6.71A27.75,27.75,0,0,0,68,48,28,28,0,0,0,40,76v76a88,88,0,0,0,176,0V116A28,28,0,0,0,188,88Zm12,64a72,72,0,0,1-144,0V76a12,12,0,0,1,24,0v44a8,8,0,0,0,16,0V44a12,12,0,0,1,24,0v68a8,8,0,0,0,16,0V60a12,12,0,0,1,24,0v68.67A48.08,48.08,0,0,0,120,176a8,8,0,0,0,16,0,32,32,0,0,1,32-32,8,8,0,0,0,8-8V116a12,12,0,0,1,24,0Z"/></svg><div><span class="tag">Memilih diam</span><p>44,4% memilih diam dan membiarkan.</p></div></div>
       <div class="irow"><svg class="ico" viewBox="0 0 256 256" aria-hidden="true"><path d="M248,120a48.05,48.05,0,0,0-48-48H160.2c-2.91-.17-53.62-3.74-101.91-44.24A16,16,0,0,0,32,40V200a16,16,0,0,0,26.29,12.25c37.77-31.68,77-40.76,93.71-43.3v31.72A16,16,0,0,0,159.12,214l11,7.33A16,16,0,0,0,194.5,212l11.77-44.36A48.07,48.07,0,0,0,248,120ZM48,199.93V40h0c42.81,35.91,86.63,45,104,47.24v65.48C134.65,155,90.84,164.07,48,199.93Zm131,8,0,.11-11-7.33V168h21.6ZM200,152H168V88h32a32,32,0,1,1,0,64Z"/></svg><div><span class="tag">Melapor</span><p>Hanya 2,8% melapor ke dosen, 1 dari 36 orang.</p></div></div>
       <div class="irow"><svg class="ico" viewBox="0 0 256 256" aria-hidden="true"><path d="M208,40H48A16,16,0,0,0,32,56v56c0,52.72,25.52,84.67,46.93,102.19,23.06,18.86,46,25.26,47,25.53a8,8,0,0,0,4.2,0c1-.27,23.91-6.67,47-25.53C198.48,196.67,224,164.72,224,112V56A16,16,0,0,0,208,40Zm0,72c0,37.07-13.66,67.16-40.6,89.42A129.3,129.3,0,0,1,128,223.62a128.25,128.25,0,0,1-38.92-21.81C61.82,179.51,48,149.3,48,112l0-56,160,0ZM82.34,141.66a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32l-56,56a8,8,0,0,1-11.32,0Z"/></svg><div><span class="tag">Rasa aman</span><p>Skor rasa aman melapor 3,31 dari 5.</p></div></div>
-      <a class="vidpill" href="#alur"><svg class="ico" viewBox="0 0 256 256" aria-hidden="true"><path d="M232.4,114.49,88.32,26.35a16,16,0,0,0-16.2-.3A15.86,15.86,0,0,0,64,39.87V216.13A15.94,15.94,0,0,0,80,232a16.07,16.07,0,0,0,8.36-2.35L232.4,141.51a15.81,15.81,0,0,0,0-27ZM80,215.94V40l143.83,88Z"/></svg>Tonton video</a>
     </aside>
   </section>
 
   <!-- ===== A. ALUR ===== -->
   <section class="sec alur" id="alur" aria-labelledby="h-alur">
     <div class="stack">
-      <span class="labelrow label">Alur program</span>
+      <span class="idx label"><b>01</b>Alur program</span>
       <h2 class="heading" id="h-alur">Tiga langkah, sekitar 20 menit</h2>
       <p class="lead muted">Ikuti urutannya supaya hasil pre-test dan post-test bisa dibandingkan.</p>
       <ol class="box steps">
@@ -468,7 +532,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
   <!-- ===== B. MATERI ===== -->
   <section class="sec two" id="materi" aria-labelledby="h-materi">
     <div class="stack" style="gap:20px">
-      <span class="labelrow label">Materi</span>
+      <span class="idx label"><b>02</b>Materi</span>
       <h2 class="heading" id="h-materi">Korupsi kecil di kampus</h2>
       <p class="lead">Korupsi tidak selalu soal uang miliaran. Polanya sama setiap kali seseorang mengambil keuntungan secara tidak jujur dan merugikan orang lain.</p>
       <p class="muted">Kebiasaan ini terbawa keluar kampus. Ketidakjujuran akademik berkaitan dengan ketidakjujuran di tempat kerja (Nonis &amp; Swift, 2001), dan penyimpangan yang dibiarkan lama-lama dianggap normal (Ashforth &amp; Anand, 2003).</p>
@@ -489,17 +553,27 @@ button, input, select, textarea { font: inherit; color: inherit; }
     </div>
   </section>
 
+  <!-- ===== PERNYATAAN (momen scroll) ===== -->
+  <section class="say" aria-label="Temuan utama survei">
+    <p class="saytext" data-words>Sebanyak <em>61,1%</em> responden tidak bertindak karena merasa kecurangan itu <em>bukan urusan mereka.</em></p>
+    <p class="small muted">Survei kelompok kami, 36 mahasiswa, Oktober 2026.</p>
+  </section>
+  <div class="ticker" aria-hidden="true"><div class="tk">
+    <span>Titip absen</span><i>✳</i><span>Menyontek saat ujian</span><i>✳</i><span>Plagiarisme tugas</span><i>✳</i><span>Uang kas dipakai pribadi</span><i>✳</i><span>Menggelembungkan anggaran</span><i>✳</i>
+    <span>Titip absen</span><i>✳</i><span>Menyontek saat ujian</span><i>✳</i><span>Plagiarisme tugas</span><i>✳</i><span>Uang kas dipakai pribadi</span><i>✳</i><span>Menggelembungkan anggaran</span><i>✳</i>
+  </div></div>
+
   <!-- ===== C. SURVEI ===== -->
   <section class="sec sec--deep two" id="survei" aria-labelledby="h-survei">
     <div class="stack" style="gap:20px">
-      <span class="labelrow label">Survei 36 mahasiswa</span>
+      <span class="idx label"><b>03</b>Survei 36 mahasiswa</span>
       <h2 class="heading" id="h-survei">Sikapnya antikorupsi, tindakannya belum</h2>
       <p class="lead">Responden setuju bahwa penyalahgunaan dana organisasi sekecil apa pun adalah korupsi (skor 4,69 dari 5) dan tidak setuju bahwa melaporkan teman adalah pengkhianatan (skor 2,14).</p>
       <p class="small muted">Survei daring Oktober 2026 dengan snowball sampling. Hasil hanya menggambarkan kelompok responden.</p>
     </div>
     <div class="bars" role="img" aria-label="Responden yang langsung bertindak: 97,2 persen pada kasus uang kas, 25,0 persen pada kasus menyontek saat UAS">
-      <div class="bar"><div class="bhead"><span>Bendahara memakai uang kas organisasi. Responden yang menegur atau melapor</span><span class="stat">97,2%</span></div><div class="track"><span class="fill" data-w="97.2%"></span></div></div>
-      <div class="bar"><div class="bhead"><span>Sahabat menyontek saat UAS. Responden yang langsung menegur atau melapor ke pengawas</span><span class="stat stat--hot">25,0%</span></div><div class="track"><span class="fill fill--hot" data-w="25%"></span></div></div>
+      <div class="bar"><div class="bhead"><span>Bendahara memakai uang kas organisasi. Responden yang menegur atau melapor</span><span class="stat" data-count="97.2">97,2%</span></div><div class="track"><span class="fill" data-w="97.2%"></span></div></div>
+      <div class="bar"><div class="bhead"><span>Sahabat menyontek saat UAS. Responden yang langsung menegur atau melapor ke pengawas</span><span class="stat stat--hot" data-count="25.0">25,0%</span></div><div class="track"><span class="fill fill--hot" data-w="25%"></span></div></div>
       <p class="small muted">Pada kasus menyontek, 41,7% memilih menegur setelah UAS dan 27,8% pura-pura tidak tahu.</p>
     </div>
   </section>
@@ -507,8 +581,8 @@ button, input, select, textarea { font: inherit; color: inherit; }
   <!-- ===== D. HAMBATAN ===== -->
   <section class="sec" id="hambatan" aria-labelledby="h-hambatan">
     <div class="stack" style="gap:16px; margin-bottom:28px">
-      <span class="labelrow label">Hambatan</span>
-      <h2 class="heading" id="h-hambatan">Tiga hambatan untuk bertindak</h2>
+      <span class="idx label"><b>04</b>Hambatan</span>
+      <h2 class="heading" id="h-hambatan">Kenapa kita memilih diam</h2>
     </div>
     <div class="two">
       <ul class="stack" style="gap:12px">
@@ -534,8 +608,8 @@ button, input, select, textarea { font: inherit; color: inherit; }
   <!-- ===== E. TINDAKAN ===== -->
   <section class="sec tindakan" id="tindakan" aria-labelledby="h-tindakan">
     <div class="stack">
-      <span class="labelrow label">Tindakan</span>
-      <h2 class="heading" id="h-tindakan">Tiga hal yang bisa kamu lakukan</h2>
+      <span class="idx label"><b>05</b>Tindakan</span>
+      <h2 class="heading" id="h-tindakan">Mulai dari yang paling dekat</h2>
       <div class="stack" style="gap:12px">
         <article class="box act">
           <div class="ah"><svg class="ico" viewBox="0 0 256 256" aria-hidden="true"><path d="M216,80H184V48a16,16,0,0,0-16-16H40A16,16,0,0,0,24,48V176a8,8,0,0,0,13,6.22L72,154V184a16,16,0,0,0,16,16h93.59L219,230.22a8,8,0,0,0,5,1.78,8,8,0,0,0,8-8V96A16,16,0,0,0,216,80ZM66.55,137.78,40,159.25V48H168v88H71.58A8,8,0,0,0,66.55,137.78ZM216,207.25l-26.55-21.47a8,8,0,0,0-5-1.78H88V152h80a16,16,0,0,0,16-16V96h32Z"/></svg><h3 class="title">Berani menegur</h3></div>
@@ -595,7 +669,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
   <!-- ===== F. NILAI ===== -->
   <section class="sec" id="nilai" aria-labelledby="h-nilai">
     <div class="stack" style="gap:16px; margin-bottom:28px">
-      <span class="labelrow label">Nilai</span>
+      <span class="idx label"><b>06</b>Nilai</span>
       <h2 class="heading" id="h-nilai">Nilai Pancasila dan SDGs 16</h2>
       <p class="lead muted">Menurut Kaelan (2016), nilai Pancasila terdiri atas nilai dasar, nilai instrumental, dan nilai praksis. Survei kami menunjukkan titik lemahnya ada di nilai instrumental.</p>
     </div>
@@ -630,7 +704,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
   <!-- ===== G. POST-TEST ===== -->
   <footer class="sec" id="post-test" aria-labelledby="h-post">
     <div class="close">
-      <span class="labelrow label">Langkah terakhir</span>
+      <span class="idx label"><b>07</b>Langkah terakhir</span>
       <h2 class="display" id="h-post"><span style="white-space:nowrap">Post-test<span class="caret" aria-hidden="true">_</span></span></h2>
       <p class="lead muted">Kerjakan setelah menonton video dan membaca materi. Gunakan NIM yang sama seperti saat pre-test supaya hasilnya bisa dibandingkan.</p>
       <a class="big" href="https://forms.gle/VUACPuoT9hs24kQr5" target="_blank" rel="noopener">Kerjakan post-test<svg class="ico" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
@@ -743,6 +817,95 @@ button, input, select, textarea { font: inherit; color: inherit; }
     [when, where, what, proof].forEach(function (el) { el.removeAttribute("aria-invalid"); document.getElementById(el.id + "-err").hidden = true; });
     done.hidden = true; fields.hidden = false; when.focus();
   });
+
+  // ===== Gerak saat scroll =====
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // muncul bertahap
+  var groups = [".sec", ".say", ".ticker", ".step", ".lrow", ".statbox", ".barrier", ".reason", ".act", ".node", ".sila li", ".sdg", ".app", ".clip", ".refs li"];
+  var rvEls = [];
+  document.querySelectorAll(groups.join(",")).forEach(function (el) {
+    if (el.closest(".win")) return;
+    el.classList.add("rv");
+    var sib = el.parentElement ? Array.prototype.indexOf.call(el.parentElement.children, el) : 0;
+    el.style.setProperty("--i", el.classList.contains("sec") || el.classList.contains("say") ? 0 : Math.min(sib, 6));
+    rvEls.push(el);
+  });
+  if ("IntersectionObserver" in window && !reduce) {
+    var ro = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("in"); ro.unobserve(en.target); } });
+    }, { threshold: .12, rootMargin: "0px 0px -6% 0px" });
+    rvEls.forEach(function (el) { ro.observe(el); });
+  } else { rvEls.forEach(function (el) { el.classList.add("in"); }); }
+
+  // angka survei menghitung naik
+  var fmt = function (v, d) { return v.toFixed(d).replace(".", ",") + "%"; };
+  document.querySelectorAll("[data-count]").forEach(function (el) {
+    var target = parseFloat(el.dataset.count), dec = (el.dataset.count.split(".")[1] || "").length;
+    if (reduce || !("IntersectionObserver" in window)) return;
+    el.textContent = fmt(0, dec);
+    var co = new IntersectionObserver(function (entries) {
+      if (!entries[0].isIntersecting) return; co.disconnect();
+      var t0 = performance.now(), dur = 1200;
+      (function step(t) { var k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 3); el.textContent = fmt(target * e, dec); if (k < 1) requestAnimationFrame(step); })(t0);
+    }, { threshold: .4 });
+    co.observe(el);
+  });
+
+  // kalimat pernyataan menyala kata demi kata
+  var say = document.querySelector("[data-words]"), words = [];
+  if (say) {
+    (function split(node) {
+      Array.prototype.slice.call(node.childNodes).forEach(function (c) {
+        if (c.nodeType === 3) {
+          var frag = document.createDocumentFragment();
+          c.textContent.split(/(\s+)/).forEach(function (part) {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+            var sp = document.createElement("span"); sp.className = "w"; sp.textContent = part; frag.appendChild(sp); words.push(sp);
+          });
+          node.replaceChild(frag, c);
+        } else if (c.nodeType === 1) split(c);
+      });
+    })(say);
+    if (reduce) words.forEach(function (w) { w.classList.add("on"); });
+  }
+
+  var bar = document.querySelector(".progress span"), top = document.querySelector(".topbar"), hero = document.getElementById("mulai");
+  var tk = document.querySelector(".tk"), ticker = document.querySelector(".ticker");
+  var ticking = false;
+  function onScroll() {
+    ticking = false;
+    var y = window.scrollY, vh = window.innerHeight, docH = document.documentElement.scrollHeight - vh;
+    bar.style.transform = "scaleX(" + (docH > 0 ? Math.min(1, y / docH) : 0) + ")";
+    if (hero) top.classList.toggle("show", hero.getBoundingClientRect().bottom < 0);
+    if (reduce) return;
+    if (say && words.length) {
+      var r = say.getBoundingClientRect();
+      var prog = (vh * .85 - r.top) / (r.height + vh * .35);
+      var n = Math.round(Math.max(0, Math.min(1, prog)) * words.length);
+      words.forEach(function (w, i) { w.classList.toggle("on", i < n); });
+    }
+    if (tk && ticker) {
+      var tr = ticker.getBoundingClientRect();
+      if (tr.bottom > 0 && tr.top < vh) tk.style.setProperty("--tx", (-(vh - tr.top) * .35) + "px");
+    }
+  }
+  window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  window.addEventListener("resize", onScroll);
+  onScroll();
+
+  // pintasan di bar atas ikut menandai bagian aktif
+  var topLinks = document.querySelectorAll(".topnav a");
+  if ("IntersectionObserver" in window) {
+    var tio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        var id = { hambatan: "survei", "post-test": "nilai" }[en.target.id] || en.target.id;
+        topLinks.forEach(function (a) { a.classList.toggle("is-current", a.getAttribute("href") === "#" + id); });
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    ["alur", "materi", "survei", "hambatan", "tindakan", "nilai", "post-test"].forEach(function (id) { var el = document.getElementById(id); if (el) tio.observe(el); });
+  }
 })();
 </script>
 </body>
